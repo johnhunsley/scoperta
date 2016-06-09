@@ -1,10 +1,9 @@
 package com.scoperta.model;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBVersionAttribute;
+import com.amazonaws.services.dynamodbv2.datamodeling.*;
 
 import java.io.Serializable;
+import java.net.URI;
 
 /** _______  _______  _______  _______  _______  ______    _______  _______
  * |       ||       ||       ||       ||       ||    _ |  |       ||   _   |
@@ -22,11 +21,32 @@ import java.io.Serializable;
  */
 @DynamoDBTable(tableName="ScopertaRegistrations")
 public class Registration implements Serializable {
+    @DynamoDBIgnore
     private static final long serialVersionUID = 785794562779985L;
 
     @DynamoDBVersionAttribute(attributeName = "version")
     private Long version;
 
-    @DynamoDBHashKey(attributeName="Id")
+    @DynamoDBHashKey(attributeName="id")
     private Long id;
+
+    @DynamoDBAttribute(attributeName="name")
+    private String name;
+
+    @DynamoDBAttribute(attributeName="description")
+    private String description;
+
+    @DynamoDBAttribute(attributeName="uri")
+    private String uri;
+
+    @DynamoDBAttribute(attributeName="pingUri")
+    private String pingUri;
+
+    @DynamoDBAttribute(attributeName="active")
+    private boolean active;
+
+    @DynamoDBAttribute(attributeName="alive")
+    private boolean alive;
+
+
 }
